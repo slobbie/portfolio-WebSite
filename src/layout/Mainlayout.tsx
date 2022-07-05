@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '../components/Menu';
 import Header from './Header';
 
 const Mainlayout = () => {
+  const [active, setActive] = useState<boolean>(false);
   return (
     <Container>
       <Header />
