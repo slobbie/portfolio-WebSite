@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
+import { ToggleValue } from '../atom';
 import Menu from '../components/Menu';
 import Header from './Header';
 
 const Mainlayout = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const [active, setActive] = useRecoilState(ToggleValue);
 
   const onToggle = () => {
     setActive(!active);
@@ -13,7 +15,7 @@ const Mainlayout = () => {
 
   return (
     <Container className={active ? 'active' : 'noneActive'}>
-      <Header onToggle={onToggle} active={active} />
+      <Header onToggle={onToggle} />
       <MainContainer className='main-container'>
         <Main className='main'>
           <Content>
@@ -23,7 +25,7 @@ const Mainlayout = () => {
           </Content>
         </Main>
       </MainContainer>
-      {/* <Menu /> */}
+      <Menu />
     </Container>
   );
 };

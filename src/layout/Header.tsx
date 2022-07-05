@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { ToggleValue } from '../atom';
+import { Link } from 'react-router-dom';
 
-interface props {
+export interface props {
   onToggle: () => void;
-  active: boolean;
+  active?: boolean;
+  setActive?: Dispatch<SetStateAction<boolean>>;
 }
 
-const Header = ({ onToggle, active }: props) => {
-  // const [active, setActive] = useState<boolean>(false);
-
-  console.log(active);
-
+const Header = ({ onToggle }: props) => {
+  const toggle = useRecoilValue(ToggleValue);
   return (
     <Container>
       <Content>
-        <Logo>Logo</Logo>
+        <Logo>
+          <Link to='/'>Logo</Link>
+        </Logo>
         <Toggle onClick={() => onToggle()}>
-          {active ? (
+          {toggle ? (
             <AiOutlineClose className='closeIcon' />
           ) : (
             <AiOutlineMenu className='menuIcon' />

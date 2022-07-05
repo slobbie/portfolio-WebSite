@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
  ul,nav, section {
   margin: 0;
  }
- ul{
+ ul, li{
   list-style: none;
   padding: 0;
  }
