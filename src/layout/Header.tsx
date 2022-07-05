@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
-const Header = () => {
-  const [active, setActive] = useState<boolean>(false);
+interface props {
+  onToggle: () => void;
+  active: boolean;
+}
+
+const Header = ({ onToggle, active }: props) => {
+  // const [active, setActive] = useState<boolean>(false);
+
+  console.log(active);
+
   return (
     <Container>
       <Content>
         <Logo>Logo</Logo>
-        <Toggle onClick={() => setActive(!active)}>
+        <Toggle onClick={() => onToggle()}>
           {active ? (
-            <AiOutlineMenu className='menuIcon' />
-          ) : (
             <AiOutlineClose className='closeIcon' />
+          ) : (
+            <AiOutlineMenu className='menuIcon' />
           )}
         </Toggle>
       </Content>
