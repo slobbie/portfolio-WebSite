@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { ToggleValue } from '../atom';
+import { ToggleValue } from '../../atom';
 
 const Menu = () => {
   const active = useRecoilValue(ToggleValue);

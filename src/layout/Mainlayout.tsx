@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
 import { ToggleValue } from '../atom';
-import Menu from '../components/Menu';
+import Menu from '../components/nav/Menu';
 import Header from './Header';
 
 const Mainlayout = () => {
