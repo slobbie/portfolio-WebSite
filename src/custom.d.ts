@@ -5,3 +5,11 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+declare module '*.png' {
+  import React = require('react');
+
+  export const ReactComponent: React.FC<React.PngProps<PngElement>>;
+  const src: string;
+  export default src;
+}

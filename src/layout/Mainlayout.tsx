@@ -9,13 +9,9 @@ import Header from './Header';
 const Mainlayout = () => {
   const [active, setActive] = useRecoilState(ToggleValue);
 
-  const onToggle = () => {
-    setActive(!active);
-  };
-
   return (
     <Container className={active ? 'active' : 'noneActive'}>
-      <Header onToggle={onToggle} />
+      <Header />
       <MainContainer className='main-container'>
         <Main className='main'>
           <Content>
