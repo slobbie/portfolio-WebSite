@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { ReactComponent as GithubIcon } from '../../assets/svg/github-brands.svg';
@@ -7,6 +6,8 @@ import { ReactComponent as Blog } from '../../assets/svg/laptop-code-solid.svg';
 import { ReactComponent as Notion } from '../../assets/svg/notion-logo.svg';
 import { ClickValue } from '../../atom';
 import { Colors } from '../../Styled/Colors';
+import { motion } from 'framer-motion';
+import { ClickProps } from '../../layout/Header';
 
 const IconComponent = () => {
   const click = useRecoilValue(ClickValue);
@@ -17,34 +18,56 @@ const IconComponent = () => {
         {/* <Work>work</Work> */}
         <Button
           onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 1.5, 1] }}
+          transition={{ type: 'spring', duration: 1, delay: 1.2 }}
         >
           <GithubIcon
-            fill={click ? Colors.white : Colors.black}
+            fill={+click ? Colors.white : Colors.black}
             width={30}
             className='icon'
           />
         </Button>
         <Button
           onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 1.5, 1] }}
+          transition={{ type: 'spring', duration: 1, delay: 1.4 }}
         >
           <Blog
-            fill={click ? Colors.white : Colors.black}
+            fill={+click ? Colors.white : Colors.black}
             width={30}
             className='icon'
           />
         </Button>
         <Button
           onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 1.5, 1] }}
+          transition={{ type: 'spring', duration: 1, delay: 1.6 }}
         >
           <Notion
-            fill={click ? Colors.white : Colors.black}
+            fill={+click ? Colors.white : Colors.black}
             width={30}
             height={30}
             className='icon notion'
           />
         </Button>
       </Container>
-      <Line click={click} />
+      <Line
+        click={+click}
+        initial={{
+          height: 0,
+        }}
+        animate={{
+          height: '8rem',
+        }}
+        transition={{
+          type: 'spring',
+          duration: 1,
+          delay: 0.3,
+        }}
+      />
     </>
   );
 };
@@ -66,11 +89,11 @@ const Container = styled.div`
     margin-bottom: 0;
   }
 `;
-const Button = styled.button`
+const Button = styled(motion.button)`
   border: none;
   background: transparent;
 `;
-const Line = styled.div<{ click: boolean }>`
+const Line = styled(motion.div)<ClickProps>`
   width: 2px;
   height: 8rem;
   background-color: ${(props) => (props.click ? Colors.white : Colors.black)};

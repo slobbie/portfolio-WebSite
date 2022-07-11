@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled, { keyframes } from 'styled-components';
-import { ToggleValue } from '../atom';
+import { ClickValue, ToggleValue, WorkValue } from '../atom';
 import Menu from '../components/nav/Menu';
 import Header from './Header';
 
 const Mainlayout = () => {
   const [active, setActive] = useRecoilState(ToggleValue);
+  // const [click, setClick] = useRecoilState(ClickValue);
+  // const [work, setWork] = useRecoilState(WorkValue);
+
+  // useEffect(() => {
+  //   console.log('메인레이아웃');
+  // }, []);
 
   return (
     <Container className={active ? 'active' : 'noneActive'}>

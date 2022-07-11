@@ -1,32 +1,41 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { ClickValue, ToggleValue } from '../atom';
+import { ClickValue, ToggleValue, WorkValue } from '../atom';
 import { Link } from 'react-router-dom';
 import { Colors } from '../Styled/Colors';
 import IconComponent from '../components/nav/IconComponent';
 import { motion } from 'framer-motion';
 import { MdDoubleArrow } from 'react-icons/md';
 
-export interface props {
-  onToggle: () => void;
-  active?: boolean;
-  setActive?: Dispatch<SetStateAction<boolean>>;
+export interface Workprops {
+  work: boolean | number;
+  click: any;
+}
+
+export interface ClickProps {
+  click: boolean | number;
 }
 
 const Header = () => {
   // const toggle = useRecoilValue(ToggleValue);
-  const [active, setActive] = useRecoilState(ToggleValue);
+  // const [active, setActive] = useRecoilState(ToggleValue);
   const click = useRecoilValue(ClickValue);
+  const [work, setWork] = useRecoilState(WorkValue);
 
-  const onToggle = () => {
-    setActive(!active);
+  // const onToggle = () => {
+  //   setActive(!active);
+  // };
+
+  const onWork = () => {
+    setWork(!work);
   };
+
   return (
     <Container>
       <Content>
-        <Logo click={click}>
+        <Logo click={+click}>
           <Link to='/'>HS</Link>
         </Logo>
         {/* <Toggle onClick={() => onToggle()}>
@@ -36,11 +45,27 @@ const Header = () => {
             <AiOutlineMenu className='menuIcon' />
           )}
         </Toggle> */}
-        <Work click={click}>
+        <Work
+          work={+work}
+          click={+click}
+          onClick={() => onWork()}
+          // initial={{
+          //   x: -100,
+          //   rotate: -90,
+          // }}
+          // transition={{ type: 'spring', duration: 0.3 }}
+          // animate={{
+          //   x: -10,
+          //   rotate: -90,
+          //   transition: { type: 'spring', duration: 0.5 },
+          // }}
+          // whileHover={{ scale: 1.1 }}
+          // whileTap={{ scale: 0.9 }}
+        >
           <Link to='/work'>
-            <Text click={click}>Work</Text>
+            <Text click={+click}>Work</Text>
           </Link>
-          <IconArrow click={click}>
+          <IconArrow click={+click}>
             <MdDoubleArrow className='arrow' />
           </IconArrow>
         </Work>
@@ -74,7 +99,7 @@ const Content = styled.div`
   justify-content: space-around;
 `;
 
-const Logo = styled.div<{ click: boolean }>`
+const Logo = styled.div<ClickProps>`
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 15px;
@@ -84,7 +109,7 @@ const Logo = styled.div<{ click: boolean }>`
   }
 `;
 
-const Transform = css<{ click: boolean }>`
+const Transform = css<ClickProps>`
   ${(props) =>
     props.click
       ? css`
@@ -95,25 +120,28 @@ const Transform = css<{ click: boolean }>`
         `}
 `;
 
-const Work = styled(motion.div)<{ click: boolean }>`
-  color: ${(props) => (props.click ? Colors.white : Colors.black)};
+const Work = styled(motion.div)<Workprops>`
   left: 2rem;
   ${Transform}
-  /* transform: rotate(-90deg) translate(-50%, -50%); */
   text-decoration: none;
   margin-left: 28px;
   transition: all 1s ease;
   margin-bottom: ${(props) => (props.click ? '200px' : '60px')};
   cursor: pointer;
   font-size: ${(props) => (props.click ? '32px' : '22px')};
-  display: flex;
+  display: ${(props) => (props.work ? 'none' : 'flex')};
   &:hover {
     font-size: 26px;
   }
+  /* a {
+    color: ${(props) => props.click && Colors.black};
+  } */
 `;
 
-const Text = styled.div<{ click: boolean }>`
-  margin-left: ${(props) => (props.click ? '50px' : '0')}; ;
+const Text = styled.div<ClickProps>`
+  margin-left: ${(props) => (props.click ? '50px' : '0')};
+  color: ${(props) => (props.click ? Colors.white : Colors.black)};
+  cursor: pointer;
 `;
 
 const animate = keyframes`
@@ -133,7 +161,7 @@ const animate = keyframes`
     }
 `;
 
-const IconArrow = styled.div<{ click: boolean }>`
+const IconArrow = styled.div<ClickProps>`
   position: relative;
   left: 30px;
   display: ${(props) => (props.click ? 'block' : 'none')};

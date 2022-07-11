@@ -5,6 +5,7 @@ import Mainlayout from './layout/Mainlayout';
 import Contact from './page/Contact';
 import Home from './page/Home';
 import Service from './page/Service';
+import Work from './page/Work';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Mainlayout />}>
           <Route index element={<Home />} />
-          <Route path='service' element={<Service />} />
-          <Route path='contact' element={<Contact />} />
+          <Route path='/work' element={<Work />} />
+          <Route path='/service' element={<Service />} />
+          <Route path='/contact/*' element={<Contact />} />
         </Route>
       </Routes>
     </div>
@@ -29,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     overflow-x: hidden;
     color: white;
+    /* scrollbar-width: none;
+    ::-webkit-scrollbar {
+display: none;
+} */
  }
  ul,nav, section {
   margin: 0;

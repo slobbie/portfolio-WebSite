@@ -15,7 +15,7 @@ const Menu = () => {
     <Container className={active ? 'active' : ''}>
       <Li onClick={() => Navigate('/')}>Home</Li>
       <Li>
-        <Link to='/service'>Service</Link>
+        <Link to='/work'>Work</Link>
       </Li>
       <Li>
         <Link to='/contact'>Contact</Link>
