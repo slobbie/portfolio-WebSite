@@ -12,7 +12,7 @@ export interface WorkProps {
   stack?: any[];
   Info?: string;
   projectImg?: string;
-  stackImg?: string;
+  TitleColor?: string;
 }
 
 const WorkCord = (props: WorkProps) => {
@@ -32,14 +32,14 @@ const WorkCord = (props: WorkProps) => {
     >
       <CardContainer>
         <TopContainer>
-          <CircleWrapper>
+          {/* <CircleWrapper>
             <Circle />
-          </CircleWrapper>
+          </CircleWrapper> */}
           <ImgWrapper>
-            <Imgs
+            {/* <Imgs
               style={{
                 x: 80,
-                y: 44,
+                y: 44,s
                 rotateX,
                 rotateY,
                 rotate: '-20deg',
@@ -50,13 +50,14 @@ const WorkCord = (props: WorkProps) => {
               whileDrag={{ cursor: 'grabbing' }}
             >
               <img src={props.projectImg} alt='projcet-Title' />
-            </Imgs>
+            </Imgs> */}
           </ImgWrapper>
-          <Text>{props.title}</Text>
+          <SmallText>Project</SmallText>
+          <Text style={{ color: props.TitleColor }}>{props.title}</Text>
         </TopContainer>
         <BottomContainer>
           <InfoDetail stack={props.stack} Info={props.Info} />
-          <WorkIcons stackImg={props.stackImg} />
+          <WorkIcons />
         </BottomContainer>
       </CardContainer>
     </CardWrapper>
@@ -80,7 +81,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 25px;
-  box-shadow: 0 2px 7px 1px rgba(31, 31, 31, 0.2);
+  /* box-shadow: 0 2px 7px 1px rgba(31, 31, 31, 0.2); */
   background-color: #1d1f21;
   color: ${Colors.white};
   position: relative;
@@ -124,7 +125,7 @@ const TopContainer = styled.div`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1.2;
   padding: 0 1em;
 `;
 
@@ -160,4 +161,13 @@ const Imgs = styled(motion.div)`
     height: 100%;
     user-select: none;
   }
+`;
+
+const SmallText = styled.span`
+  font-size: 11px;
+  color: ${Colors.white};
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-right: auto;
+  margin-left: 20px;
 `;

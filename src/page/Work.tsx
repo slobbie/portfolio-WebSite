@@ -2,8 +2,12 @@ import React, { RefObject, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import WorkCord, { WorkProps } from '../components/work/WorkCord';
 import Me from '../assets/Images/profile.png';
+import Netflix from '../assets/Images/netflix-logo.png';
 import { useRecoilState } from 'recoil';
-import { ClickValue, WorkValue } from '../atom';
+import { ClickValue, ToggleValue, WorkValue } from '../atom';
+import { Colors } from '../Styled/Colors';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
 const Work = () => {
   const WorkData = [
@@ -11,64 +15,45 @@ const Work = () => {
       id: 1,
       title: 'NETFLIX Clone',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: '넷플릭스 클론 코딩입니다.',
+      Info: '메인페이지 넷플릭스 클론 코딩',
       projectImg: `${Me}`,
-      stackImg: `${Me}`,
+      TitleColor: 'red',
     },
     {
       id: 2,
-      title: 'TodoList web ',
+      title: 'Kanban board',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: '넷플릭스 클론 코딩입니다.',
-      projectImg: `${Me}`,
-      stackImg: `${Me}`,
-    },
-    {
-      id: 3,
-      title: 'TodoList web ',
-      stack: ['React', 'JS', 'Style-Component'],
-      Info: '넷플릭스 클론 코딩입니다.',
-      projectImg: `${Me}`,
-      stackImg: `${Me}`,
-    },
-    {
-      id: 4,
-      title: 'TodoList web ',
-      stack: ['React', 'JS', 'Style-Component'],
-      Info: '넷플릭스 클론 코딩입니다.',
-      projectImg: `${Me}`,
-      stackImg: `${Me}`,
-    },
-    {
-      id: 5,
-      title: 'TodoList web ',
-      stack: ['React', 'JS', 'Style-Component'],
-      Info: '넷플릭스 클론 코딩입니다.',
-      projectImg: `${Me}`,
-      stackImg: `${Me}`,
+      Info: 'Todo 관리 앱',
+      projectImg: `${Netflix}`,
+
+      TitleColor: '#2ed573',
     },
   ];
   const [click, setClick] = useRecoilState(ClickValue);
   const [work, setWork] = useRecoilState(WorkValue);
+  const [active, setActive] = useRecoilState(ToggleValue);
   useEffect(() => {
-    setClick(!click);
+    setClick(false);
     console.log('Work');
   }, []);
 
-  // const WorkPageRef = useRef(null);
+  const onToggle = () => {
+    setActive(!active);
+  };
 
-  // useEffect(() => {
-  //   let El = WorkPageRef.current;
-
-  //   const rotate = () => {
-  //     El.style.transform = `translateX(${-window.pageYOffset}px)`;
-  //   };
-
-  //   window.addEventListener('scroll', rotate);
-  //   return () => window.removeEventListener('scroll', rotate);
-  // }, []);
   return (
-    <Section>
+    <Section
+      initial={{ x: 1000 }}
+      animate={{ x: 0 }}
+      transition={{ type: 'tween', duration: 1 }}
+    >
+      <Toggle onClick={() => onToggle()}>
+        {active ? (
+          <AiOutlineClose className='closeIcon' />
+        ) : (
+          <AiOutlineMenu className='menuIcon' />
+        )}
+      </Toggle>
       <Wrapper className='page'>
         {WorkData.map((item: WorkProps) => {
           return (
@@ -78,7 +63,7 @@ const Work = () => {
               stack={item.stack}
               Info={item.Info}
               projectImg={item.projectImg}
-              stackImg={item.stackImg}
+              TitleColor={item.TitleColor}
             />
           );
         })}
@@ -89,7 +74,7 @@ const Work = () => {
 
 export default Work;
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -116,5 +101,27 @@ const Wrapper = styled.div`
   margin: 50px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+  }
+`;
+
+const Toggle = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  margin-right: 25px;
+  .menuIcon,
+  .closeIcon {
+    transition: 0.3s ease-in-out;
+    width: 25px;
+    height: 25px;
+    fill: ${Colors.black};
   }
 `;

@@ -6,7 +6,6 @@ import { WorkProps } from './WorkCord';
 const InfoDetail = (props: WorkProps) => {
   return (
     <Container>
-      <SmallText>Project</SmallText>
       <BottomWrapper>
         <LargeText>Stack</LargeText>
       </BottomWrapper>

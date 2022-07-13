@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import { ClickValue, WorkValue } from '../atom';
 import Intro from '../components/Home/Intro';
 import { motion } from 'framer-motion';
-import { ClickProps } from '../layout/Header';
+import { ClickProps, Workprops } from '../layout/Header';
 
 const Home = () => {
   const [click, setClick] = useRecoilState(ClickValue);
@@ -21,7 +21,7 @@ const Home = () => {
     setClick(false);
     console.log('Home');
   }, []);
-
+  console.log(work);
   return (
     <Section>
       <DarkDiv click={+click} />
@@ -43,7 +43,7 @@ const Home = () => {
 
 export default Home;
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   width: 100%;
   height: 100vh;
   background: ${Colors.white};
@@ -99,10 +99,6 @@ const Center = styled(motion.button)<ClickProps>`
     top: 83%;
     border: none;
   }
-
-  /* &:hover {
-    background-color: red;
-  } */
 `;
 
 const Span = styled.span<ClickProps>`
