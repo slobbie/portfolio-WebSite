@@ -65,9 +65,11 @@ const Header = () => {
           <Link to='/work'>
             <Text click={+click}>Work</Text>
           </Link>
-          <IconArrow click={+click}>
-            <MdDoubleArrow className='arrow' />
-          </IconArrow>
+          <Link to='/work'>
+            <IconArrow click={+click} onClick={() => onWork()}>
+              <MdDoubleArrow className='arrow' />
+            </IconArrow>
+          </Link>
         </Work>
         <IconComponent />
       </Content>

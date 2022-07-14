@@ -22,6 +22,20 @@ const WorkCord = (props: WorkProps) => {
   const rotateX = useTransform(y, [-100, 100], [30, -30]);
   const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
+  // const Item = {
+  //   hidden: {
+  //     scale: 0,
+  //   },
+  //   show: {
+  //     scale: 1,
+  //     transition: {
+  //       type: 'spring',
+  //       duration: 1,
+  //       delay: 1,
+  //     },
+  //   },
+  // };
+
   return (
     <CardWrapper
       style={{ x, y, rotateX, rotateY, z: 100 }}
@@ -33,24 +47,24 @@ const WorkCord = (props: WorkProps) => {
       <CardContainer>
         <TopContainer>
           {/* <CircleWrapper>
-            <Circle />
-          </CircleWrapper> */}
+              <Circle />
+            </CircleWrapper> */}
           <ImgWrapper>
             {/* <Imgs
-              style={{
-                x: 80,
-                y: 44,s
-                rotateX,
-                rotateY,
-                rotate: '-20deg',
-                z: 100000,
-              }}
-              drag
-              dragElastic={0.12}
-              whileDrag={{ cursor: 'grabbing' }}
-            >
-              <img src={props.projectImg} alt='projcet-Title' />
-            </Imgs> */}
+                style={{
+                  x: 80,
+                  y: 44,s
+                  rotateX,
+                  rotateY,
+                  rotate: '-20deg',
+                  z: 100000,
+                }}
+                drag
+                dragElastic={0.12}
+                whileDrag={{ cursor: 'grabbing' }}
+              >
+                <img src={props.projectImg} alt='projcet-Title' />
+              </Imgs> */}
           </ImgWrapper>
           <SmallText>Project</SmallText>
           <Text style={{ color: props.TitleColor }}>{props.title}</Text>

@@ -1,5 +1,5 @@
-import React, { RefObject, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import WorkCord, { WorkProps } from '../components/work/WorkCord';
 import Me from '../assets/Images/profile.png';
 import Netflix from '../assets/Images/netflix-logo.png';
@@ -8,7 +8,8 @@ import { ClickValue, ToggleValue, WorkValue } from '../atom';
 import { Colors } from '../Styled/Colors';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { motion } from 'framer-motion';
-
+import BigTitle from '../components/BigTitle';
+import { ReactComponent as Logo } from '../assets/svg/yin-yang-solid.svg';
 const Work = () => {
   const WorkData = [
     {
@@ -28,17 +29,48 @@ const Work = () => {
 
       TitleColor: '#2ed573',
     },
+    {
+      id: 3,
+      title: 'Kanban board',
+      stack: ['React', 'JS', 'Style-Component'],
+      Info: 'Todo 관리 앱',
+      projectImg: `${Netflix}`,
+
+      TitleColor: '#2ed573',
+    },
+    {
+      id: 4,
+      title: 'Kanban board',
+      stack: ['React', 'JS', 'Style-Component'],
+      Info: 'Todo 관리 앱',
+      projectImg: `${Netflix}`,
+
+      TitleColor: '#2ed573',
+    },
   ];
   const [click, setClick] = useRecoilState(ClickValue);
   const [work, setWork] = useRecoilState(WorkValue);
   const [active, setActive] = useRecoilState(ToggleValue);
+
   useEffect(() => {
     setClick(false);
-    console.log('Work');
   }, []);
 
   const onToggle = () => {
     setActive(!active);
+  };
+
+  const Container = {
+    hidden: { scale: 0 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        staggerChildren: 0.7,
+        duration: 2,
+        type: 'spring',
+      },
+    },
   };
 
   return (
@@ -54,7 +86,13 @@ const Work = () => {
           <AiOutlineMenu className='menuIcon' />
         )}
       </Toggle>
-      <Wrapper className='page'>
+      <BigTitle text='Work' top={8} left={10} />
+      <Wrapper
+        className='page'
+        variants={Container}
+        initial='hidden'
+        animate='show'
+      >
         {WorkData.map((item: WorkProps) => {
           return (
             <WorkCord
@@ -68,6 +106,9 @@ const Work = () => {
           );
         })}
       </Wrapper>
+      <Rotate>
+        <Logo width={75} height={75} />
+      </Rotate>
     </Section>
   );
 };
@@ -89,7 +130,7 @@ const Section = styled(motion.section)`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -98,7 +139,7 @@ const Wrapper = styled.div`
   max-width: 1000px;
   width: 100%;
   height: 100%;
-  margin: 50px;
+  /* margin: 50px; */
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -123,5 +164,26 @@ const Toggle = styled.div`
     width: 25px;
     height: 25px;
     fill: ${Colors.black};
+  }
+`;
+
+const rotateAnimation = keyframes`
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Rotate = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  animation: ${rotateAnimation} infinite 1.5s linear;
+  transition: all 1s ease;
+
+  &:active {
+    right: 850px;
   }
 `;

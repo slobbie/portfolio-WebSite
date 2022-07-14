@@ -103,6 +103,7 @@ const Center = styled(motion.button)<ClickProps>`
 
 const Span = styled.span<ClickProps>`
   display: ${(props) => (props.click ? 'none' : 'inline-block')};
+  font-size: 18px;
   padding-top: 1rem;
 `;
 
