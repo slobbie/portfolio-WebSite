@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { Colors } from '../../Styled/Colors';
 import { WorkProps } from './WorkCord';
 import { ReactComponent as GithubIcon } from '../../assets/svg/github-brands.svg';
-import { ReactComponent as Blog } from '../../assets/svg/laptop-code-solid.svg';
+import { ReactComponent as Notion } from '../../assets/svg/notion-logo.svg';
 const WorkIcons = (props: WorkProps) => {
+  console.log(props.visit);
   return (
     <Container>
-      <Visit>Visit</Visit>
+      <Visit onClick={() => window.open(props.visit, '_blank')}>Visit</Visit>
       <IconBox>
         <Button>
           {/* <img src={props.stackImg} alt='button-icon' /> */}
@@ -19,7 +20,7 @@ const WorkIcons = (props: WorkProps) => {
           />
         </Button>
         <Button>
-          <Blog fill={Colors.white} width={30} className='icon' />
+          <Notion fill={Colors.white} width={30} className='icon' />
         </Button>
       </IconBox>
     </Container>
@@ -47,6 +48,7 @@ const Visit = styled.button`
   background-color: ${Colors.yellow};
   color: ${Colors.white};
   margin: 5px;
+  cursor: pointer;
 `;
 
 const IconBox = styled.div`

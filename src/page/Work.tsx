@@ -9,25 +9,26 @@ import { Colors } from '../Styled/Colors';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import BigTitle from '../components/BigTitle';
-import { ReactComponent as Logo } from '../assets/svg/yin-yang-solid.svg';
+import { MdDoubleArrow } from 'react-icons/md';
 const Work = () => {
   const WorkData = [
     {
       id: 1,
-      title: 'NETFLIX Clone',
+      title: 'Wanted ON BOARDING',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: '메인페이지 넷플릭스 클론 코딩',
-      projectImg: `${Me}`,
-      TitleColor: 'red',
+      Info: 'Wanted 에서 주최한  onboarding 프로그램 참여',
+      projectImg: `${Netflix}`,
+      visit: 'https://slobbie.github.io/React-canvas/',
+      TitleColor: '#fff',
     },
     {
       id: 2,
-      title: 'Kanban board',
+      title: 'MOVIEFLIX',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: 'Todo 관리 앱',
-      projectImg: `${Netflix}`,
-
-      TitleColor: '#2ed573',
+      Info: '상영중인 영화 및 TV SHOW 를 알수있는 페이지',
+      projectImg: `${Me}`,
+      visit: 'https://slobbie.github.io/React-canvas/',
+      TitleColor: 'red',
     },
     {
       id: 3,
@@ -35,17 +36,26 @@ const Work = () => {
       stack: ['React', 'JS', 'Style-Component'],
       Info: 'Todo 관리 앱',
       projectImg: `${Netflix}`,
-
+      visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#2ed573',
     },
     {
       id: 4,
-      title: 'Kanban board',
+      title: 'REACT-CANVAS',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: 'Todo 관리 앱',
+      Info: 'REACT-CANVAS',
       projectImg: `${Netflix}`,
-
-      TitleColor: '#2ed573',
+      visit: 'https://slobbie.github.io/React-canvas/',
+      TitleColor: '#1E5DF7',
+    },
+    {
+      id: 5,
+      title: 'CATCHER-UIKIT',
+      stack: ['React', 'JS', 'Style-Component'],
+      Info: 'SIDE-PROJECT에서 사용되는 UIKit',
+      projectImg: `${Netflix}`,
+      visit: 'https://slobbie.github.io/React-canvas/',
+      TitleColor: '#97511E',
     },
   ];
   const [click, setClick] = useRecoilState(ClickValue);
@@ -86,7 +96,7 @@ const Work = () => {
           <AiOutlineMenu className='menuIcon' />
         )}
       </Toggle>
-      <BigTitle text='Work' top={8} left={10} />
+      <BigTitle size='L' text='Work' top={8} left={10} position />
       <Wrapper
         className='page'
         variants={Container}
@@ -102,13 +112,15 @@ const Work = () => {
               Info={item.Info}
               projectImg={item.projectImg}
               TitleColor={item.TitleColor}
+              visit={item.visit}
             />
           );
         })}
       </Wrapper>
-      <Rotate>
-        <Logo width={75} height={75} />
-      </Rotate>
+      <BottomTitle>
+        <BigTitle size='S' text='Scroll' bottom={0} right={10} />
+        <MdDoubleArrow className='arrow' />
+      </BottomTitle>
     </Section>
   );
 };
@@ -139,9 +151,13 @@ const Wrapper = styled(motion.div)`
   max-width: 1000px;
   width: 100%;
   height: 100%;
+  position: relative;
+  left: 100px;
   /* margin: 50px; */
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    top: 150px;
+    left: 0;
   }
 `;
 
@@ -167,23 +183,40 @@ const Toggle = styled.div`
   }
 `;
 
-const rotateAnimation = keyframes`
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+const animate = keyframes`
+   0% {
+    
+      transform: translateX(0);
+    }
+    40% {
+      
+      transform:  translateX(-5px);
+    }
+    70% {
+      transform:   translateX(5px);
+    }
+   100%{
+    transform: translateX(0);
+    }
 `;
 
-const Rotate = styled.div`
+const BottomTitle = styled.div`
   position: absolute;
-  bottom: 20px;
-  right: 30px;
-  animation: ${rotateAnimation} infinite 1.5s linear;
-  transition: all 1s ease;
-
-  &:active {
-    right: 850px;
+  bottom: 3px;
+  right: 90px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  .arrow {
+    position: absolute;
+    fill: ${Colors.gray200};
+    width: calc(3rem + 1vw);
+    height: calc(3rem + 1vw);
+    bottom: 6px;
+    left: 10px;
+    animation: ${animate} 3s linear infinite;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;

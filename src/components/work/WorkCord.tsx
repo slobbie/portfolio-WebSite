@@ -13,6 +13,7 @@ export interface WorkProps {
   Info?: string;
   projectImg?: string;
   TitleColor?: string;
+  visit?: string;
 }
 
 const WorkCord = (props: WorkProps) => {
@@ -67,11 +68,17 @@ const WorkCord = (props: WorkProps) => {
               </Imgs> */}
           </ImgWrapper>
           <SmallText>Project</SmallText>
-          <Text style={{ color: props.TitleColor }}>{props.title}</Text>
+          <Text
+            style={{
+              color: props.TitleColor,
+            }}
+          >
+            {props.title}
+          </Text>
         </TopContainer>
         <BottomContainer>
           <InfoDetail stack={props.stack} Info={props.Info} />
-          <WorkIcons />
+          <WorkIcons visit={props.visit} />
         </BottomContainer>
       </CardContainer>
     </CardWrapper>
@@ -130,8 +137,9 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1.2;
+  align-items: flex-start;
   position: relative;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   /* padding: 1em 15px; */
 `;
@@ -143,12 +151,12 @@ const BottomContainer = styled.div`
   padding: 0 1em;
 `;
 
-const Text = styled.h2`
+const Text = styled(motion.h2)`
   color: ${Colors.white};
   text-transform: uppercase;
   margin: 0;
-  z-index: 10;
-  font-size: 50px;
+  z-index: 100;
+  font-size: 40px;
   font-weight: 900;
   padding: 1rem;
 `;

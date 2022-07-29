@@ -29,7 +29,7 @@ const IconComponent = () => {
           />
         </Button>
         <Button
-          onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          onClick={() => window.open('https://velog.io/@slobber/', '_blank')}
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1.5, 1] }}
           transition={{ type: 'spring', duration: 1, delay: 1.4 }}
@@ -41,7 +41,12 @@ const IconComponent = () => {
           />
         </Button>
         <Button
-          onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          onClick={() =>
+            window.open(
+              'https://bolder-frog-020.notion.site/76dc1d0ebd64400ba4a9eb6229eddea2',
+              '_blank'
+            )
+          }
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1.5, 1] }}
           transition={{ type: 'spring', duration: 1, delay: 1.6 }}
@@ -92,6 +97,7 @@ const Container = styled.div`
 const Button = styled(motion.button)`
   border: none;
   background: transparent;
+  cursor: pointer;
 `;
 const Line = styled(motion.div)<ClickProps>`
   width: 2px;
