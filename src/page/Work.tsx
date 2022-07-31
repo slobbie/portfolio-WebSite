@@ -20,6 +20,8 @@ const Work = () => {
       projectImg: `${Netflix}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#fff',
+      notionLink: '',
+      githubLink: '',
     },
     {
       id: 2,
@@ -29,6 +31,8 @@ const Work = () => {
       projectImg: `${Me}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: 'red',
+      notionLink: '',
+      githubLink: '',
     },
     {
       id: 3,
@@ -38,6 +42,8 @@ const Work = () => {
       projectImg: `${Netflix}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#2ed573',
+      notionLink: '',
+      githubLink: '',
     },
     {
       id: 4,
@@ -47,6 +53,8 @@ const Work = () => {
       projectImg: `${Netflix}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#1E5DF7',
+      notionLink: '',
+      githubLink: '',
     },
     {
       id: 5,
@@ -56,6 +64,19 @@ const Work = () => {
       projectImg: `${Netflix}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#97511E',
+      notionLink: '',
+      githubLink: '',
+    },
+    {
+      id: 6,
+      title: 'PoKemon Card book',
+      stack: ['React', 'JS', 'Style-Component'],
+      Info: 'PoKemon API 를 이용한 Card Book',
+      projectImg: `${Netflix}`,
+      visit: 'https://slobbie.github.io/PokemonCardBooks/',
+      TitleColor: 'yellow',
+      notionLink: '',
+      githubLink: 'https://github.com/slobbie/PokemonCardBooks',
     },
   ];
   const [click, setClick] = useRecoilState(ClickValue);
