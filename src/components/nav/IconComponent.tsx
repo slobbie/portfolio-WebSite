@@ -15,7 +15,6 @@ const IconComponent = () => {
   return (
     <>
       <Container>
-        {/* <Work>work</Work> */}
         <Button
           onClick={() => window.open('https://github.com/slobbie', '_blank')}
           initial={{ scale: 0 }}

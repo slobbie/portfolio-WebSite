@@ -65,11 +65,11 @@ const Header = () => {
           <Link to='/work'>
             <Text click={+click}>Work</Text>
           </Link>
-          <Link to='/work'>
+          {/* <Link to='/work'>
             <IconArrow click={+click} onClick={() => onWork()}>
               <MdDoubleArrow className='arrow' />
             </IconArrow>
-          </Link>
+          </Link> */}
         </Work>
         <IconComponent />
       </Content>
@@ -140,10 +140,32 @@ const Work = styled(motion.div)<Workprops>`
   } */
 `;
 
+const TextAni = keyframes`
+  0%{
+   font-size: 32px;
+  }
+  20%{
+    font-size: 36px;
+  }
+  40%{
+    font-size: 38px;
+  }
+  60%{
+    font-size: 40px;
+  }
+  80%{
+    font-size: 36px;
+  }
+  100%{
+    font-size: 32px;
+  }
+`;
+
 const Text = styled.div<ClickProps>`
-  margin-left: ${(props) => (props.click ? '50px' : '0')};
+  margin-left: ${(props) => (props.click ? '30px' : '0')};
   color: ${(props) => (props.click ? Colors.white : Colors.black)};
   cursor: pointer;
+  animation: ${(props) => props.click && TextAni} 2s linear infinite;
 `;
 
 const animate = keyframes`

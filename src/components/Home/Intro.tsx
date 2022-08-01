@@ -6,32 +6,34 @@ import { motion } from 'framer-motion';
 
 const Intro = () => {
   return (
-    <Box
-      initial={{ height: 0 }}
-      animate={{ height: '55vh' }}
-      transition={{ type: 'spring', duration: 2, delay: 1 }}
-    >
-      <SubBox>
-        <Text
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-        >
-          <h2>Hi,</h2>
-          <h3>I'm Jeong Haeseok</h3>
-          <h6>Front End Developer</h6>
-        </Text>
-      </SubBox>
-      <SubBox>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-        >
-          <img className='pic' src={Me} alt='profile pic' />
-        </motion.div>
-      </SubBox>
-    </Box>
+    <>
+      <Box
+        initial={{ height: 0 }}
+        animate={{ height: '55vh' }}
+        transition={{ type: 'spring', duration: 2, delay: 1 }}
+      >
+        <SubBox>
+          <Text
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+          >
+            <h2>Hi,</h2>
+            <h3>I'm Jeong Haeseok</h3>
+            <h6>Front End Developer</h6>
+          </Text>
+        </SubBox>
+        <SubBox>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+          >
+            <img className='pic' src={Me} alt='profile pic' />
+          </motion.div>
+        </SubBox>
+      </Box>
+    </>
   );
 };
 

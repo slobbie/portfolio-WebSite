@@ -19,9 +19,8 @@ const Home = () => {
   useEffect(() => {
     setWork(false);
     setClick(false);
-    console.log('Home');
   }, []);
-  console.log(work);
+
   return (
     <Section>
       <DarkDiv click={+click} />

@@ -29,14 +29,14 @@ const Work = () => {
       stack: ['React', 'JS', 'Style-Component'],
       Info: '상영중인 영화 및 TV SHOW 를 알수있는 페이지',
       projectImg: `${Me}`,
-      visit: 'https://slobbie.github.io/React-canvas/',
+      visit: 'https://slobbie.github.io/Movieflix',
       TitleColor: 'red',
       notionLink: '',
-      githubLink: '',
+      githubLink: 'https://github.com/slobbie/Movieflix',
     },
     {
       id: 3,
-      title: 'Kanban board',
+      title: 'Tem-Sellbar',
       stack: ['React', 'JS', 'Style-Component'],
       Info: 'Todo 관리 앱',
       projectImg: `${Netflix}`,
@@ -54,18 +54,18 @@ const Work = () => {
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#1E5DF7',
       notionLink: '',
-      githubLink: '',
+      githubLink: 'https://github.com/slobbie/React-canvas',
     },
     {
       id: 5,
       title: 'CATCHER-UIKIT',
       stack: ['React', 'JS', 'Style-Component'],
-      Info: 'SIDE-PROJECT에서 사용되는 UIKit',
+      Info: 'SIDE-PROJECT에서 사용되는 UIKit 제작',
       projectImg: `${Netflix}`,
       visit: 'https://slobbie.github.io/React-canvas/',
       TitleColor: '#97511E',
       notionLink: '',
-      githubLink: '',
+      githubLink: 'https://github.com/94-s/catcher-storybook',
     },
     {
       id: 6,
@@ -140,7 +140,7 @@ const Work = () => {
       </Wrapper>
       <BottomTitle>
         <BigTitle size='S' text='Scroll' bottom={0} right={10} />
-        <MdDoubleArrow className='arrow' />
+        {/* <MdDoubleArrow className='arrow' /> */}
       </BottomTitle>
     </Section>
   );
