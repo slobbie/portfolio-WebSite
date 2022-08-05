@@ -13,6 +13,7 @@ export interface WorkProps {
   Info?: string;
   TitleColor?: string;
   visit?: string;
+  githubLink?: string;
 }
 
 const WorkCord = (props: WorkProps) => {
@@ -77,7 +78,7 @@ const WorkCord = (props: WorkProps) => {
         </TopContainer>
         <BottomContainer>
           <InfoDetail stack={props.stack} Info={props.Info} />
-          <WorkIcons visit={props.visit} />
+          <WorkIcons visit={props.visit} githubLink={props.githubLink} />
         </BottomContainer>
       </CardContainer>
     </CardWrapper>

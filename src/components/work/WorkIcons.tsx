@@ -10,7 +10,7 @@ const WorkIcons = (props: WorkProps) => {
     <Container>
       <Visit onClick={() => window.open(props.visit, '_blank')}>Visit</Visit>
       <IconBox>
-        <Button onClick={() => window.open(props.visit, '_blank')}>
+        <Button onClick={() => window.open(props.githubLink, '_blank')}>
           {/* <img src={props.stackImg} alt='button-icon' /> */}
           <GithubIcon
             fill={Colors.white}

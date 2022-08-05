@@ -27,7 +27,7 @@ const Work = () => {
       title: 'Wanted ON BOARDING',
       stack: ['React,', 'vue,', 'JS,', 'Style-Component'],
       Info: 'Wanted 주최 onboarding 프로그램 ',
-      visit: 'https://team4-nexon-kartrider.netlify.app/',
+      visit: 'https://team4-nexon-kartrider.netlify.app/rank',
       TitleColor: '#fff',
       githubLink: 'https://github.com/wanted-Team4',
     },
@@ -125,6 +125,7 @@ const Work = () => {
               Info={item.Info}
               TitleColor={item.TitleColor}
               visit={item.visit}
+              githubLink={item.githubLink}
             />
           );
         })}
