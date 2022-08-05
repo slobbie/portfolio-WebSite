@@ -18,9 +18,9 @@ const Intro = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2 }}
           >
-            <h2>Hi,</h2>
+            <h2>HI,</h2>
             <h3>I'm Jeong Haeseok</h3>
-            <h6>Front End Developer</h6>
+            <h6>I design and Code simple yet Interaction Design websites.</h6>
           </Text>
         </SubBox>
         <SubBox>

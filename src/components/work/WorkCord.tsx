@@ -11,7 +11,6 @@ export interface WorkProps {
   title?: string;
   stack?: any[];
   Info?: string;
-  projectImg?: string;
   TitleColor?: string;
   visit?: string;
 }

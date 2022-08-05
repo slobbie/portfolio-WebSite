@@ -102,12 +102,16 @@ const Content = styled.div`
 `;
 
 const Logo = styled.div<ClickProps>`
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2rem;
   margin-top: 15px;
   margin-bottom: auto;
+  font-weight: 700;
   a {
     color: ${(props) => (props.click ? Colors.white : Colors.black)};
+  }
+  img {
+    width: 45px;
+    height: 45px;
   }
 `;
 

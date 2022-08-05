@@ -4,17 +4,13 @@ import { Colors } from '../../Styled/Colors';
 import { WorkProps } from './WorkCord';
 
 const InfoDetail = (props: WorkProps) => {
+  console.log(props.stack);
   return (
     <Container>
       <BottomWrapper>
         <LargeText>Stack</LargeText>
       </BottomWrapper>
-      <SmallText>
-        {props.stack}
-        {props.stack?.map((i: any) => {
-          return <SmallText key={i}>{i.stack}</SmallText>;
-        })}
-      </SmallText>
+      <SmallText>{props.stack}</SmallText>
       <MediumText>{props.Info}</MediumText>
     </Container>
   );
@@ -44,6 +40,7 @@ const SmallText = styled.span`
   font-weight: 800;
   text-transform: uppercase;
   margin: 2px;
+  letter-spacing: 2px;
 `;
 
 const MediumText = styled.span`

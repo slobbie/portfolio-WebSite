@@ -10,7 +10,7 @@ const WorkIcons = (props: WorkProps) => {
     <Container>
       <Visit onClick={() => window.open(props.visit, '_blank')}>Visit</Visit>
       <IconBox>
-        <Button>
+        <Button onClick={() => window.open(props.visit, '_blank')}>
           {/* <img src={props.stackImg} alt='button-icon' /> */}
           <GithubIcon
             fill={Colors.white}
@@ -19,9 +19,9 @@ const WorkIcons = (props: WorkProps) => {
             className='icon'
           />
         </Button>
-        <Button>
+        {/* <Button>
           <Notion fill={Colors.white} width={30} className='icon' />
-        </Button>
+        </Button> */}
       </IconBox>
     </Container>
   );
