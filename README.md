@@ -2,9 +2,18 @@
 
 🍎 [배포 링크](https://slobbie.github.io/portfolio-website/)
 
+<img width="1185" alt="스크린샷 2022-08-06 오전 12 52 55" src="https://user-images.githubusercontent.com/86298255/183357946-fdd2855e-8d2a-4cd2-88dc-ecbf72ba36dd.png">
+
 ## 사용 스택
 
-`REACT`
+`Typescript` `React` `Styled-Components`
+
+## 주요 기능
+
+작업물들을 정리하기 위한 website
+
+- 작업물정리
+- Interaction
 
 ### Getting Started
 
