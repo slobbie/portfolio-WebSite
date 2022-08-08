@@ -4,7 +4,6 @@ import { Colors } from '../../Styled/Colors';
 import { WorkProps } from './WorkCord';
 
 const InfoDetail = (props: WorkProps) => {
-  console.log(props.stack);
   return (
     <Container>
       <BottomWrapper>

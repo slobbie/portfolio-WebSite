@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
  body {
     margin: 0;
     min-height: 100vh;
-    /* overflow-x: hidden; */
+    /* overflow: auto; */
     color: white;
  }
  ul,nav, section {

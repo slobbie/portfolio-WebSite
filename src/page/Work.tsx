@@ -96,6 +96,40 @@ const Work = () => {
     },
   };
 
+  const ref: any = useRef(null);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     let scrollPosition = window.pageYOffset;
+  //     let windowSize = window.innerHeight;
+  //     let bodyHeight = document.body.offsetHeight;
+
+  //     let diff = Math.max(bodyHeight - (scrollPosition + windowSize));
+
+  //     let diffp = (diff * 100) / (bodyHeight - windowSize);
+
+  //     hiddenRef.current.style.transform = `translateY(${-diffp}%`;
+
+  //     if (window.pageYOffset > 5) {
+  //       hiddenRef.current.style.display = 'none';
+  //     } else {
+  //       hiddenRef.current.style.display = 'block';
+  //     }
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // });
+
+  useEffect(() => {
+    let element = ref.current;
+
+    const rotate = () => {
+      element.style.transform = `translatex(${-window.pageYOffset}px)`;
+    };
+    window.addEventListener('scroll', rotate);
+    return () => window.removeEventListener('scroll', rotate);
+  });
+
   return (
     <Section
       initial={{ x: 1000 }}
@@ -115,6 +149,8 @@ const Work = () => {
         variants={Container}
         initial='hidden'
         animate='show'
+        ref={ref}
+        style={{}}
       >
         {WorkData.map((item: WorkProps) => {
           return (
@@ -148,7 +184,7 @@ const Section = styled(motion.section)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
   scrollbar-width: none;
   ::-webkit-scrollbar {
     display: none;
@@ -157,18 +193,17 @@ const Section = styled(motion.section)`
 
 const Wrapper = styled(motion.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-content: space-between;
-  max-width: 1000px;
   width: 100%;
-  height: 100%;
   position: relative;
   left: 100px;
-  /* margin: 50px; */
+  height: 100vh;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
     top: 150px;
     left: 0;
   }

@@ -45,6 +45,12 @@ const Container = styled.div`
     visibility: visible;
     transform: translateX(0);
   }
+  @media screen and (max-width: 768px) {
+    bottom: 0;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+  }
 `;
 
 const Li = styled.div`
@@ -65,12 +71,12 @@ const Li = styled.div`
   }
   &:hover {
     padding-left: 24px;
+    color: yellow;
   }
   &:hover::before {
     width: 15px;
   }
+  @media screen and (max-width: 768px) {
+    margin: 10px;
+  }
 `;
-
-// const Container = styled.div``
-
-// const Container = styled.div``

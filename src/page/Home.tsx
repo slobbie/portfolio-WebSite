@@ -76,6 +76,9 @@ const Text = styled(motion.h2)<ClickProps>`
   transition: all 1s ease;
   font-family: 'Poor Story';
   animation: ${TextAni} 0.5s;
+  @media screen and (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Center = styled(motion.button)<ClickProps>`

@@ -5,7 +5,6 @@ import { WorkProps } from './WorkCord';
 import { ReactComponent as GithubIcon } from '../../assets/svg/github-brands.svg';
 import { ReactComponent as Notion } from '../../assets/svg/notion-logo.svg';
 const WorkIcons = (props: WorkProps) => {
-  console.log(props.visit);
   return (
     <Container>
       <Visit onClick={() => window.open(props.visit, '_blank')}>Visit</Visit>
