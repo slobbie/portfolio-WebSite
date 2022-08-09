@@ -96,40 +96,6 @@ const Work = () => {
     },
   };
 
-  const ref: any = useRef(null);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     let scrollPosition = window.pageYOffset;
-  //     let windowSize = window.innerHeight;
-  //     let bodyHeight = document.body.offsetHeight;
-
-  //     let diff = Math.max(bodyHeight - (scrollPosition + windowSize));
-
-  //     let diffp = (diff * 100) / (bodyHeight - windowSize);
-
-  //     hiddenRef.current.style.transform = `translateY(${-diffp}%`;
-
-  //     if (window.pageYOffset > 5) {
-  //       hiddenRef.current.style.display = 'none';
-  //     } else {
-  //       hiddenRef.current.style.display = 'block';
-  //     }
-  //   };
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // });
-
-  useEffect(() => {
-    let element = ref.current;
-
-    const rotate = () => {
-      element.style.transform = `translatex(${-window.pageYOffset}px)`;
-    };
-    window.addEventListener('scroll', rotate);
-    return () => window.removeEventListener('scroll', rotate);
-  });
-
   return (
     <Section
       initial={{ x: 1000 }}
@@ -149,7 +115,6 @@ const Work = () => {
         variants={Container}
         initial='hidden'
         animate='show'
-        ref={ref}
         style={{}}
       >
         {WorkData.map((item: WorkProps) => {
@@ -222,6 +187,7 @@ const Toggle = styled.div`
   right: 0;
   margin: 5px;
   margin-right: 25px;
+  z-index: 1000;
   .menuIcon,
   .closeIcon {
     transition: 0.3s ease-in-out;
