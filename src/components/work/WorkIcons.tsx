@@ -11,12 +11,12 @@ const WorkIcons = (props: WorkProps) => {
       <IconBox>
         <Button onClick={() => window.open(props.githubLink, '_blank')}>
           {/* <img src={props.stackImg} alt='button-icon' /> */}
-          <GithubIcon
+          {/* <GithubIcon
             fill={Colors.white}
             width={30}
             height={30}
             className='icon'
-          />
+          /> */}
         </Button>
         {/* <Button>
           <Notion fill={Colors.white} width={30} className='icon' />

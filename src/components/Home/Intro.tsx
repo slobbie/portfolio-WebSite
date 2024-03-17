@@ -3,37 +3,45 @@ import styled from 'styled-components';
 import { Colors } from '../../Styled/Colors';
 import Me from '../../assets/Images/profile.png';
 import { motion } from 'framer-motion';
-
+// import Spline from '@splinetool/react-spline';
 const Intro = () => {
   return (
-    <>
-      <Box
-        initial={{ height: 0 }}
-        animate={{ height: '55vh' }}
-        transition={{ type: 'spring', duration: 2, delay: 1 }}
-      >
-        <SubBox>
-          <Text
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2 }}
-          >
-            <h2>HI,</h2>
-            <h3>I'm Jeong Haeseok</h3>
-            <h6>I design and Code simple yet Interaction Design websites.</h6>
-          </Text>
-        </SubBox>
-        <SubBox>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2 }}
-          >
-            <img className='pic' src={Me} alt='profile pic' />
-          </motion.div>
-        </SubBox>
-      </Box>
-    </>
+    <Box
+      initial={{ height: 0 }}
+      animate={{ height: '55vh' }}
+      transition={{ type: 'spring', duration: 2, delay: 1 }}
+    >
+      <SubBox>
+        <Text
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          <h3>FrontEnd Engineer</h3>
+          <h4>정해석</h4>
+          <span>
+            좋은 코드는 누구나 읽기 쉬운 코드다. <br /> 라는 모토를 바탕으로,{' '}
+            <br />더 나은 코드를 작성하기 위해 노력합니다.{' '}
+          </span>
+        </Text>
+      </SubBox>
+      <SubBox>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
+          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
+          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
+          {/* <Spline scene='https://prod.spline.design/SzgIYyTZuyKUJhPF/scene.splinecode' /> */}
+          {/* 로봇 */}
+          {/* <Spline scene='https://prod.spline.design/SzgIYyTZuyKUJhPF/scene.splinecode' /> */}
+          {/* <Spline scene='https://prod.spline.design/ekeJFYMz2N6za9Kf/scene.splinecode' /> */}
+          <img className='pic' src={Me} alt='profile pic' />
+        </motion.div>
+      </SubBox>
+    </Box>
   );
 };
 
@@ -85,6 +93,11 @@ const Text = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  span {
+    font-size: 22px !important;
+  }
+
   & > *:last-child {
     color: ${Colors.gray200};
     opacity: 0.6;

@@ -45,32 +45,7 @@ const Header = () => {
             <AiOutlineMenu className='menuIcon' />
           )}
         </Toggle> */}
-        <Work
-          work={+work}
-          click={+click}
-          onClick={() => onWork()}
-          // initial={{
-          //   x: -100,
-          //   rotate: -90,
-          // }}
-          // transition={{ type: 'spring', duration: 0.3 }}
-          // animate={{
-          //   x: -10,
-          //   rotate: -90,
-          //   transition: { type: 'spring', duration: 0.5 },
-          // }}
-          // whileHover={{ scale: 1.1 }}
-          // whileTap={{ scale: 0.9 }}
-        >
-          <Link to='/work'>
-            <Text click={+click}>Work</Text>
-          </Link>
-          {/* <Link to='/work'>
-            <IconArrow click={+click} onClick={() => onWork()}>
-              <MdDoubleArrow className='arrow' />
-            </IconArrow>
-          </Link> */}
-        </Work>
+
         <IconComponent />
       </Content>
     </Container>
@@ -172,49 +147,49 @@ const Text = styled.div<ClickProps>`
   animation: ${(props) => props.click && TextAni} 2s linear infinite;
 `;
 
-const animate = keyframes`
-   0% {
-    
-      transform: rotate(180deg) translateX(0);
-    }
-    40% {
-      
-      transform: rotate(180deg)  translateX(-5px);
-    }
-    70% {
-      transform:  rotate(180deg) translateX(5px);
-    }
-   100%{
-    transform: rotate(180deg) translateX(0);
-    }
-`;
+// const animate = keyframes`
+//    0% {
 
-const IconArrow = styled.div<ClickProps>`
-  position: relative;
-  left: 30px;
-  display: ${(props) => (props.click ? 'block' : 'none')};
-  .arrow {
-    margin: -5px;
-    width: ${(props) => (props.click ? '50px' : '30px')};
-    height: ${(props) => (props.click ? '50px' : '30px')};
-    transform: rotate(180deg);
-    animation: ${animate} 1.5s linear infinite;
-  }
-`;
+//       transform: rotate(180deg) translateX(0);
+//     }
+//     40% {
 
-const Toggle = styled.div`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-  .menuIcon,
-  .closeIcon {
-    transition: 0.3s ease-in-out;
-    width: 25px;
-    height: 25px;
-    fill: ${Colors.black};
-  }
-`;
+//       transform: rotate(180deg)  translateX(-5px);
+//     }
+//     70% {
+//       transform:  rotate(180deg) translateX(5px);
+//     }
+//    100%{
+//     transform: rotate(180deg) translateX(0);
+//     }
+// `;
+
+// const IconArrow = styled.div<ClickProps>`
+//   position: relative;
+//   left: 30px;
+//   display: ${(props) => (props.click ? 'block' : 'none')};
+//   .arrow {
+//     margin: -5px;
+//     width: ${(props) => (props.click ? '50px' : '30px')};
+//     height: ${(props) => (props.click ? '50px' : '30px')};
+//     transform: rotate(180deg);
+//     animation: ${animate} 1.5s linear infinite;
+//   }
+// `;
+
+// const Toggle = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 2rem;
+//   cursor: pointer;
+//   .menuIcon,
+//   .closeIcon {
+//     transition: 0.3s ease-in-out;
+//     width: 25px;
+//     height: 25px;
+//     fill: ${Colors.black};
+//   }
+// `;

@@ -16,7 +16,7 @@ const Contact = () => {
     <Section
       initial={{ y: 10000 }}
       animate={{ y: 0 }}
-      transition={{ type: 'tween', duration: 1 }}
+      transition={{ type: 'tween', duration: 0.5 }}
     >
       <Toggle onClick={() => onToggle()}>
         {active ? (

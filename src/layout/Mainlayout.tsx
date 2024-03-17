@@ -55,7 +55,8 @@ const noneAnimation = keyframes`
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  background-color: #161616;
+  /* background-color: #161616; */
+  background-color: #1e1e1e;
   overflow-x: hidden;
   transform-style: preserve-3d;
   transform: rotate(0);
@@ -115,15 +116,21 @@ const Main = styled.div`
 const Content = styled.div`
   min-height: 100vh;
   position: relative;
+  height: auto;
+  overflow: scroll;
+  overflow-x: hidden;
 `;
 
 const OverLay = styled.div`
   position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  height: auto;
   top: 0;
   left: 0;
-  background-color: rgba(43, 51, 59, 0.8);
+  /* background-color: rgba(43, 51, 59, 0.8); */
+  /* background-color: #1e1e1e; */
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

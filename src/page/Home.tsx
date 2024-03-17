@@ -3,10 +3,13 @@ import styled, { keyframes } from 'styled-components';
 import { Colors } from '../Styled/Colors';
 import { ReactComponent as Logo } from '../assets/svg/EnterKey.svg';
 import { useRecoilState } from 'recoil';
-import { ClickValue, WorkValue } from '../atom';
+import { ClickValue, WorkValue, ToggleValue } from '../atom';
 import Intro from '../components/Home/Intro';
 import { motion } from 'framer-motion';
-import { ClickProps, Workprops } from '../layout/Header';
+import { ClickProps } from '../layout/Header';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import BigTitle from '../components/BigTitle';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [click, setClick] = useRecoilState(ClickValue);
@@ -21,8 +24,25 @@ const Home = () => {
     setClick(false);
   }, []);
 
+  const [active, setActive] = useRecoilState(ToggleValue);
+
+  const onToggle = () => {
+    setActive(!active);
+  };
+
   return (
     <Section>
+      {click && (
+        <Toggle onClick={() => onToggle()}>
+          {active ? (
+            <AiOutlineClose className='closeIcon' />
+          ) : (
+            <AiOutlineMenu className='menuIcon' />
+          )}
+        </Toggle>
+      )}
+      {click && <BigTitle size='L' text='About' top={12} right={10} position />}
+
       <DarkDiv click={+click} />
       <Text click={+click}>Log Into Joy</Text>
       <Center
@@ -36,11 +56,34 @@ const Home = () => {
         <Span click={+click}>Click me</Span>
       </Center>
       {+click ? <Intro /> : null}
+      {click && (
+        <MoreTextBox
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          <Link to='/work'>more</Link>
+        </MoreTextBox>
+      )}
     </Section>
   );
 };
 
 export default Home;
+
+const MoreTextBox = styled(motion.div)`
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  bottom: 20px;
+  z-index: 100;
+  a {
+    position: relative;
+    font-size: calc(1rem + 1vw);
+    font-weight: bold;
+    color: #e5e8eb;
+  }
+`;
 
 const Section = styled(motion.section)`
   width: 100%;
@@ -117,6 +160,29 @@ const DarkDiv = styled.div<ClickProps>`
   width: ${(props) => (props.click ? '50%' : '0%')};
   height: ${(props) => (props.click ? '100%' : '0%')};
   z-index: 10;
-  background-color: ${Colors.black};
+  background-color: #1e1e1e;
   transition: height 0.5s ease, width 1s ease 0.5s;
+`;
+
+const Toggle = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  margin-right: 25px;
+  z-index: 1000;
+  .menuIcon,
+  .closeIcon {
+    transition: 0.3s ease-in-out;
+    width: 25px;
+    height: 25px;
+    fill: ${Colors.black};
+  }
 `;

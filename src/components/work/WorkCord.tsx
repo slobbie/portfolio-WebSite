@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../Styled/Colors';
-import Me from '../../assets/Images/profile.png';
+// import Me from '../../assets/Images/profile.png';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import InfoDetail from './InfoDetail';
+// import InfoDetail from './InfoDetail';
 import WorkIcons from './WorkIcons';
 
 export interface WorkProps {
@@ -67,7 +67,7 @@ const WorkCord = (props: WorkProps) => {
                 <img src={props.projectImg} alt='projcet-Title' />
               </Imgs> */}
           </ImgWrapper>
-          <SmallText>Project</SmallText>
+          {/* <SmallText>Project</SmallText> */}
           <Text
             style={{
               color: props.TitleColor,
@@ -77,7 +77,7 @@ const WorkCord = (props: WorkProps) => {
           </Text>
         </TopContainer>
         <BottomContainer>
-          <InfoDetail stack={props.stack} Info={props.Info} />
+          {/* <InfoDetail stack={props.stack} Info={props.Info} /> */}
           <WorkIcons visit={props.visit} githubLink={props.githubLink} />
         </BottomContainer>
       </CardContainer>
@@ -88,17 +88,17 @@ const WorkCord = (props: WorkProps) => {
 export default WorkCord;
 
 const CardWrapper = styled(motion.div)`
-  width: 100%;
+  /* width: 100%; */
   perspective: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 60px;
+  /* margin: 60px; */
 `;
 
 const CardContainer = styled.div`
   width: 285px;
-  height: 500px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   border: 25px;
@@ -137,9 +137,9 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1.2;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   position: relative;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
   /* padding: 1em 15px; */
 `;
@@ -159,6 +159,7 @@ const Text = styled(motion.h2)`
   font-size: 40px;
   font-weight: 900;
   padding: 1rem;
+  text-align: center;
 `;
 
 const ImgWrapper = styled(motion.div)`
