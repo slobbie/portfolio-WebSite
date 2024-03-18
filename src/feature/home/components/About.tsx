@@ -1,10 +1,24 @@
-import React from 'react';
+// =============================================================================
+// File    :  About.tsx
+// Class   :
+// Purpose :  About
+// Date    :
+// Author  :  JHS
+// History : 2024.03 수정 작업
+// =============================================================================
+// Copyright (C) 2024 JHS All rights reserved.
+// =============================================================================
+
 import styled from 'styled-components';
-import { Colors } from '../../Styled/Colors';
-import Me from '../../assets/Images/profile.png';
+import { Colors } from '@common/styles/theme/Colors';
+import Me from '@assets/Images/profile.png';
 import { motion } from 'framer-motion';
-// import Spline from '@splinetool/react-spline';
-const Intro = () => {
+
+/**
+ * 자기소개 컴포넌트
+ * @returns JSX.Element
+ */
+const About = () => {
   return (
     <Box
       initial={{ height: 0 }}
@@ -31,13 +45,6 @@ const Intro = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
         >
-          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
-          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
-          {/* <Spline scene='https://prod.spline.design/esWyGoN7gZytzQ1z/scene.splinecode' /> */}
-          {/* <Spline scene='https://prod.spline.design/SzgIYyTZuyKUJhPF/scene.splinecode' /> */}
-          {/* 로봇 */}
-          {/* <Spline scene='https://prod.spline.design/SzgIYyTZuyKUJhPF/scene.splinecode' /> */}
-          {/* <Spline scene='https://prod.spline.design/ekeJFYMz2N6za9Kf/scene.splinecode' /> */}
           <img className='pic' src={Me} alt='profile pic' />
         </motion.div>
       </SubBox>
@@ -45,7 +52,7 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default About;
 
 const Box = styled(motion.div)`
   width: 65vw;

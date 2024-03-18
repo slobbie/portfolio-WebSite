@@ -1,101 +1,56 @@
-import React, { useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-import WorkCord, { WorkProps } from '../components/work/WorkCord';
-
+import { useMemo } from 'react';
+import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { ClickValue, ToggleValue } from '../atom';
-import { Colors } from '../Styled/Colors';
+import { isTopMenu } from '@atom/atom';
+import { Colors } from '@common/styles/theme/Colors';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { motion } from 'framer-motion';
-import BigTitle from '../components/BigTitle';
-import { MdDoubleArrow } from 'react-icons/md';
-import Line from '../components/line/Line';
-const Work = () => {
-  const WorkData = [
-    // {
-    //   id: 1,
-    //   title: 'Tem-Sellbar',
-    //   stack: ['Next.js,', 'Ts,', 'Sass'],
-    //   Info: '중고 의류 플랫폼 서비스',
-    //   visit:
-    //     'https://www.notion.so/Team-sellbar-5c4e9b57c3134aaca75d06464d612b18',
-    //   TitleColor: '#5352ed',
-    //   githubLink: 'https://github.com/beaever/team-project',
-    // },
-    // {
-    //   id: 2,
-    //   title: 'Wanted ON BOARDING',
-    //   stack: ['React,', 'vue,', 'JS,', 'Style-Component'],
-    //   Info: 'Wanted 주최 onboarding 프로그램 ',
-    //   visit: 'https://team4-nexon-kartrider.netlify.app/',
-    //   TitleColor: '#fff',
-    //   githubLink: 'https://github.com/wanted-Team4',
-    // },
-    // {
-    //   id: 3,
-    //   title: 'CATCHER-UIKIT',
-    //   stack: ['React,', 'TS,', 'Style-Component'],
-    //   Info: 'SIDE-PROJECT에서 사용되는 UIKit 제작',
-    //   visit: 'https://www.npmjs.com/package/react-uikit-catcher',
-    //   TitleColor: '#97511E',
-    //   githubLink: 'https://github.com/94-s/catcher-storybook',
-    // },
-    {
-      id: 4,
-      title: 'TvMOVIE',
-      stack: ['React,', 'TS,', 'Style-Component'],
-      Info: '상영중인 영화 및 TV SHOW 를 알수있는 페이지',
-      visit: 'https://slobbie.github.io/TvMovie/',
-      TitleColor: 'red',
-      notionLink: '',
-      githubLink: 'https://github.com/slobbie/TvMovie',
-    },
-    {
-      id: 5,
-      title: 'PoKemon Card book',
-      stack: ['React,', 'TS,', 'Style-Component'],
-      Info: 'PoKemon API 를 이용한 Card Book',
-      visit: 'https://slobbie.github.io/PokemonCardBooks/',
-      TitleColor: 'yellow',
-      notionLink: '',
-      githubLink: 'https://github.com/slobbie/PokemonCardBooks',
-    },
-    {
-      id: 6,
-      title: 'REACT-CANVAS',
-      stack: ['React,', 'TS,', 'Style-Component'],
-      Info: 'REACT-CANVAS',
-      visit: 'https://slobbie.github.io/React-canvas/',
-      TitleColor: '#1E5DF7',
-      notionLink: '',
-      githubLink: 'https://github.com/slobbie/React-canvas',
-    },
-  ];
-  const [click, setClick] = useRecoilState(ClickValue);
-  const [active, setActive] = useRecoilState(ToggleValue);
+import BigTitle from '@common/components/title/BigTitle';
+import Line from '@common/components/line/Line';
+import routes from '@src/common/constants/path.constants';
+import { useNavigate } from 'react-router-dom';
 
-  useEffect(() => {
-    setClick(false);
-  }, []);
+/**
+ *  work 페이지
+ * @returns JSX.Element
+ */
+const WorkPage = () => {
+  const url = routes.url;
+  const navigate = useNavigate();
+  /** 상단 햄버거 메뉴 노출 상태 */
+  const [isShowTopMenu, setIsShowTopMenu] = useRecoilState(isTopMenu);
 
-  const onToggle = () => {
-    setActive(!active);
+  /** 상단 햄버거 메뉴 토글 이벤트  */
+  const showTopMenuToggle = () => {
+    setIsShowTopMenu(!isShowTopMenu);
   };
 
-  const Container = {
-    hidden: { scale: 0 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        staggerChildren: 0.7,
-        duration: 2,
-        type: 'spring',
+  /** work 페이지 애니메이션 */
+  const containerAnimation = useMemo(
+    () => ({
+      hidden: { scale: 0 },
+      show: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+          staggerChildren: 0.7,
+          duration: 2,
+          type: 'spring',
+        },
       },
-    },
+    }),
+    []
+  );
+
+  /** portfolio wind open 함수 */
+  const routeWindowOpen = (pPath: string) => {
+    window.open(pPath, '_blank');
   };
 
-  //tween
+  /** contact 페이지 이동  */
+  const showContactPage = () => {
+    navigate(routes.path.contact);
+  };
 
   return (
     <Section
@@ -103,8 +58,8 @@ const Work = () => {
       animate={{ y: 0 }}
       transition={{ type: 'tween', duration: 0.8 }}
     >
-      <Toggle onClick={() => onToggle()}>
-        {active ? (
+      <Toggle onClick={showTopMenuToggle}>
+        {isShowTopMenu ? (
           <AiOutlineClose className='closeIcon' />
         ) : (
           <AiOutlineMenu className='menuIcon' />
@@ -113,7 +68,7 @@ const Work = () => {
       <BigTitle size='L' text='Work' top={12} right={10} position />
       <Wrapper
         className='page'
-        variants={Container}
+        variants={containerAnimation}
         initial='hidden'
         animate='show'
         style={{}}
@@ -214,7 +169,13 @@ const Work = () => {
               <span>
                 - 사용기술 : TypeScript, React styled-components, recoil
               </span>
-              <span>- 방문하기 : 주소</span>
+              <span>
+                - 방문하기:{' '}
+                <span onClick={() => routeWindowOpen(url.portfolio)}>
+                  {' '}
+                  {url.portfolio}
+                </span>
+              </span>
             </ProjectTextBox>
             <MarginModelBottom />
             <ProjectTextBox>
@@ -223,7 +184,13 @@ const Work = () => {
               <span>
                 - 사용기술 : TypeScript, React, styled-components, canvas
               </span>
-              <span>- 방문하기 : 주소</span>
+              <span>
+                - 방문하기:{' '}
+                <span onClick={() => routeWindowOpen(url.canvas)}>
+                  {' '}
+                  {url.canvas}
+                </span>
+              </span>
             </ProjectTextBox>
             <MarginModelBottom />
             <ProjectTextBox>
@@ -232,7 +199,13 @@ const Work = () => {
               <span>
                 - 사용기술 : TypeScript, React, styled-components, recoil, axios
               </span>
-              <span>- 방문하기 : 주소</span>
+              <span>
+                - 방문하기:{' '}
+                <span onClick={() => routeWindowOpen(url.pokemon)}>
+                  {' '}
+                  {url.pokemon}
+                </span>
+              </span>
             </ProjectTextBox>
             <MarginModelBottom />
             <ProjectTextBox>
@@ -244,7 +217,13 @@ const Work = () => {
               <span>
                 - 사용기술 : Typescript, React, Styled-Components, react-query
               </span>
-              <span>- 방문하기 : 주소</span>
+              <span>
+                - 방문하기:{' '}
+                <span onClick={() => routeWindowOpen(url.movieFlex)}>
+                  {' '}
+                  {url.movieFlex}
+                </span>
+              </span>
             </ProjectTextBox>
             <MarginModelBottom />
             <MarginModelBottom />
@@ -252,17 +231,25 @@ const Work = () => {
           <Line />
         </ProjectContent>
         <SpaceBox />
+        <More onClick={showContactPage}>More</More>
       </Wrapper>
-
-      {/* <BottomTitle> */}
-      {/* <BigTitle size='S' text='Scroll' bottom={0} right={10} /> */}
-      {/* <MdDoubleArrow className='arrow' /> */}
-      {/* </BottomTitle> */}
     </Section>
   );
 };
 
-export default Work;
+export default WorkPage;
+
+const More = styled.div`
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  left: -100px;
+  font-size: calc(1rem + 1vw);
+  font-weight: bold;
+  color: #bec1c4;
+`;
 
 const SpaceBox = styled.div`
   width: 100%;
@@ -270,7 +257,7 @@ const SpaceBox = styled.div`
 `;
 
 const Section = styled(motion.section)`
-  background-color: white;
+  background-color: #fff;
   width: 100%;
   min-height: 100vh;
   height: auto;
@@ -323,44 +310,6 @@ const Toggle = styled.div`
     width: 25px;
     height: 25px;
     fill: ${Colors.black};
-  }
-`;
-
-const animate = keyframes`
-   0% {
-
-      transform: translateX(0);
-    }
-    40% {
-
-      transform:  translateX(-5px);
-    }
-    70% {
-      transform:   translateX(5px);
-    }
-   100%{
-    transform: translateX(0);
-    }
-`;
-
-const BottomTitle = styled.div`
-  position: absolute;
-  bottom: 3px;
-  right: 90px;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  .arrow {
-    position: absolute;
-    fill: ${Colors.gray200};
-    width: calc(3rem + 1vw);
-    height: calc(3rem + 1vw);
-    bottom: 6px;
-    left: 10px;
-    animation: ${animate} 3s linear infinite;
-  }
-  @media screen and (max-width: 768px) {
-    display: none;
   }
 `;
 
@@ -423,6 +372,9 @@ const ProjectTextBox = styled(CareerTextBox)`
   span {
     display: inline-block;
     margin-left: 5px;
+    span {
+      color: #4593fc;
+    }
   }
 `;
 

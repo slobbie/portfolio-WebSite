@@ -1,75 +1,90 @@
-import React, { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Colors } from '../Styled/Colors';
-import { ReactComponent as Logo } from '../assets/svg/EnterKey.svg';
+import { Colors } from '@common/styles/theme/Colors';
+import { ReactComponent as Logo } from '@assets/svg/EnterKey.svg';
 import { useRecoilState } from 'recoil';
-import { ClickValue, WorkValue, ToggleValue } from '../atom';
-import Intro from '../components/Home/Intro';
+import { isShowMain, isTopMenu } from '@atom/atom';
+import About from '@feature/home/components/About';
 import { motion } from 'framer-motion';
-import { ClickProps } from '../layout/Header';
+import { ClickProps } from '@src/common/layout/navigation/NavigationBar';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import BigTitle from '../components/BigTitle';
-import { Link } from 'react-router-dom';
+import BigTitle from '@common/components/title/BigTitle';
+import { useNavigate } from 'react-router-dom';
+import routes from '@src/common/constants/path.constants';
 
-const Home = () => {
-  const [click, setClick] = useRecoilState(ClickValue);
-  const [work, setWork] = useRecoilState(WorkValue);
+/**
+ * 홈 메인 페이지
+ * @returns JSX.Element
+ */
+const HomePage = () => {
+  const path = routes.path;
+  const navigate = useNavigate();
+  /** 메인 페이지 노출 여부 상태 */
+  const [isShowMainToggle, setIsShowMainToggle] = useRecoilState(isShowMain);
+  /** 상단 햄버거 메뉴 노출 상태 */
+  const [isShowTopMenu, setIsShowTopMenu] = useRecoilState(isTopMenu);
 
-  const animationHandler = () => {
-    setClick(!click);
+  /** 메인페이지 노출 핸들러  */
+  const showMainPageHandler = () => {
+    setIsShowMainToggle(!isShowMainToggle);
   };
 
-  useEffect(() => {
-    setWork(false);
-    setClick(false);
-  }, []);
+  /** 상단 햄버거 메뉴 토글 이벤트  */
+  const showTopMenuToggle = () => {
+    setIsShowTopMenu(!isShowTopMenu);
+  };
 
-  const [active, setActive] = useRecoilState(ToggleValue);
-
-  const onToggle = () => {
-    setActive(!active);
+  /** work 페이지 이동 */
+  const moveWorkPageHandler = (pPath: string) => {
+    setIsShowMainToggle(false);
+    navigate(pPath);
   };
 
   return (
     <Section>
-      {click && (
-        <Toggle onClick={() => onToggle()}>
-          {active ? (
+      {isShowMainToggle && (
+        <Toggle onClick={showTopMenuToggle}>
+          {isShowTopMenu ? (
             <AiOutlineClose className='closeIcon' />
           ) : (
             <AiOutlineMenu className='menuIcon' />
           )}
         </Toggle>
       )}
-      {click && <BigTitle size='L' text='About' top={12} right={10} position />}
+      {isShowMainToggle && (
+        <BigTitle size='L' text='About' top={12} right={10} position />
+      )}
 
-      <DarkDiv click={+click} />
-      <Text click={+click}>Log Into Joy</Text>
+      <DarkDiv click={isShowMainToggle} />
+      <Text click={isShowMainToggle}>Log Into Joy</Text>
       <Center
-        click={+click}
-        onClick={() => animationHandler()}
+        click={isShowMainToggle}
+        onClick={showMainPageHandler}
         initial={{ scale: 0, translateX: -120, translateY: -120 }}
         animate={{ scale: [0, 1, 1.5, 1] }}
         transition={{ type: 'spring', duration: 1 }}
       >
-        <Logo width={+click ? 120 : 200} height={+click ? 120 : 200} />
-        <Span click={+click}>Click me</Span>
+        <Logo
+          width={isShowMainToggle ? 120 : 200}
+          height={isShowMainToggle ? 120 : 200}
+        />
+        <Span click={isShowMainToggle}>Click me</Span>
       </Center>
-      {+click ? <Intro /> : null}
-      {click && (
+      {isShowMainToggle ? <About /> : null}
+      {isShowMainToggle && (
         <MoreTextBox
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
+          onClick={() => moveWorkPageHandler(path.work)}
         >
-          <Link to='/work'>more</Link>
+          More
         </MoreTextBox>
       )}
     </Section>
   );
 };
 
-export default Home;
+export default HomePage;
 
 const MoreTextBox = styled(motion.div)`
   width: 100%;
@@ -77,12 +92,11 @@ const MoreTextBox = styled(motion.div)`
   text-align: center;
   bottom: 20px;
   z-index: 100;
-  a {
-    position: relative;
-    font-size: calc(1rem + 1vw);
-    font-weight: bold;
-    color: #e5e8eb;
-  }
+  position: absolute;
+  font-size: calc(1rem + 1vw);
+  font-weight: bold;
+  /* color: #e5e8eb; */
+  color: #bec1c4;
 `;
 
 const Section = styled(motion.section)`

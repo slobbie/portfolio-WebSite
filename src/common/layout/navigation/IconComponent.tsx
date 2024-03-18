@@ -1,57 +1,56 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { ReactComponent as GithubIcon } from '../../assets/svg/github-brands.svg';
-import { ReactComponent as Blog } from '../../assets/svg/laptop-code-solid.svg';
-import { ReactComponent as Notion } from '../../assets/svg/notion-logo.svg';
-import { ClickValue } from '../../atom';
-import { Colors } from '../../Styled/Colors';
+import { ReactComponent as GithubIcon } from '@assets/svg/github-brands.svg';
+import { ReactComponent as Blog } from '@assets/svg/laptop-code-solid.svg';
+import { ReactComponent as Notion } from '@assets/svg/notion-logo.svg';
+import { isShowMain } from '@atom/atom';
+import { Colors } from '@common/styles/theme/Colors';
 import { motion } from 'framer-motion';
-import { ClickProps } from '../../layout/Header';
+import routes from '@src/common/constants/path.constants';
 
+/** 네비게이션바 아이콘 버튼 컴포넌트 */
 const IconComponent = () => {
-  const click = useRecoilValue(ClickValue);
+  const showIsMain = useRecoilValue(isShowMain);
+  const url = routes.url;
+
+  /** 새로운 윈도우 호출 */
+  const openBlankWindow = (pUrl: string) => {
+    window.open(pUrl, '_blank');
+  };
+
+  /** svg color */
+  const svgColor = useMemo(() => {
+    return showIsMain ? Colors.white : Colors.black;
+  }, [showIsMain]);
 
   return (
     <>
       <Container>
         <Button
-          onClick={() => window.open('https://github.com/slobbie', '_blank')}
+          onClick={() => openBlankWindow(url.github)}
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1.5, 1] }}
           transition={{ type: 'spring', duration: 1, delay: 1.2 }}
         >
-          <GithubIcon
-            fill={+click ? Colors.white : Colors.black}
-            width={30}
-            className='icon'
-          />
+          <GithubIcon fill={svgColor} width={30} className='icon' />
         </Button>
         <Button
-          onClick={() => window.open('https://velog.io/@slobber/', '_blank')}
+          onClick={() => openBlankWindow(url.velog)}
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1.5, 1] }}
           transition={{ type: 'spring', duration: 1, delay: 1.4 }}
         >
-          <Blog
-            fill={+click ? Colors.white : Colors.black}
-            width={30}
-            className='icon'
-          />
+          <Blog fill={svgColor} width={30} className='icon' />
         </Button>
         <Button
-          onClick={() =>
-            window.open(
-              'https://bolder-frog-020.notion.site/76dc1d0ebd64400ba4a9eb6229eddea2',
-              '_blank'
-            )
-          }
+          onClick={() => openBlankWindow(url.notion)}
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1.5, 1] }}
           transition={{ type: 'spring', duration: 1, delay: 1.6 }}
         >
           <Notion
-            fill={+click ? Colors.white : Colors.black}
+            fill={svgColor}
             width={30}
             height={30}
             className='icon notion'
@@ -59,7 +58,7 @@ const IconComponent = () => {
         </Button>
       </Container>
       <Line
-        click={+click}
+        $showIsMain={showIsMain}
         initial={{
           height: 0,
         }}
@@ -98,8 +97,9 @@ const Button = styled(motion.button)`
   background: transparent;
   cursor: pointer;
 `;
-const Line = styled(motion.div)<ClickProps>`
+const Line = styled(motion.div)<{ $showIsMain: boolean }>`
   width: 2px;
   height: 8rem;
-  background-color: ${(props) => (props.click ? Colors.white : Colors.black)};
+  background-color: ${(props) =>
+    props.$showIsMain ? Colors.white : Colors.black};
 `;

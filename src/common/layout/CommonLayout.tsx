@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import styled, { keyframes } from 'styled-components';
-import { ClickValue, ToggleValue, WorkValue } from '../atom';
-import Menu from '../components/nav/Menu';
-import Header from './Header';
+import { isTopMenu } from '@atom/atom';
+import LayoutContainerMenu from '@src/common/layout/LayoutContainerMenu';
+import NavigationBar from '@src/common/layout/navigation/NavigationBar';
 
-const Mainlayout = () => {
-  const [active, setActive] = useRecoilState(ToggleValue);
-  // const [click, setClick] = useRecoilState(ClickValue);
-  // const [work, setWork] = useRecoilState(WorkValue);
-
-  // useEffect(() => {
-  //   console.log('메인레이아웃');
-  // }, []);
+/**
+ * 페이저 전체에 적용될 레이아웃
+ * @returns  JSX.Element
+ */
+const CommonLayout = () => {
+  /** 상단 햄버거 메뉴 노출 여부 */
+  const isShowTopMenu = useRecoilValue(isTopMenu);
 
   return (
-    <Container className={active ? 'active' : 'noneActive'}>
-      <Header />
+    <Container className={isShowTopMenu ? 'active' : 'noneActive'}>
+      <NavigationBar />
       <MainContainer className='main-container'>
         <Main className='main'>
           <Content>
@@ -27,12 +25,12 @@ const Mainlayout = () => {
           </Content>
         </Main>
       </MainContainer>
-      <Menu />
+      <LayoutContainerMenu />
     </Container>
   );
 };
 
-export default Mainlayout;
+export default CommonLayout;
 
 const mainAnimation = keyframes`
    from {
@@ -128,8 +126,7 @@ const OverLay = styled.div`
   height: auto;
   top: 0;
   left: 0;
-  /* background-color: rgba(43, 51, 59, 0.8); */
-  /* background-color: #1e1e1e; */
+
   background-color: #fff;
   display: flex;
   align-items: center;
