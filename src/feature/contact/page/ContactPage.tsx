@@ -88,7 +88,7 @@ const ContactPage = () => {
 export default ContactPage;
 
 const Section = styled(motion.section)`
-  background-color: ${({ theme }) => theme.gray100};
+  background-color: ${({ theme }) => theme.gray000};
   width: 100%;
   height: 100vh;
   display: flex;
