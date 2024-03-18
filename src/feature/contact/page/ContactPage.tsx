@@ -1,25 +1,30 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../Styled/Colors';
 import { motion } from 'framer-motion';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
-import { ToggleValue } from '../atom';
+import { isTopMenu } from '@atom/atom';
 
-const Contact = () => {
-  const [active, setActive] = useRecoilState(ToggleValue);
-  const onToggle = () => {
-    setActive(!active);
+/**
+ * 개인 연락망 소개 페이지
+ * @returns JSX.Element
+ */
+const ContactPage = () => {
+  /** 상단 햄버거 메뉴 노출 상태 */
+  const [isShowTopMenu, setIsShowTopMenu] = useRecoilState(isTopMenu);
+
+  /** 상단 햄버거 메뉴 토글 이벤트  */
+  const showTopMenuToggle = () => {
+    setIsShowTopMenu(!isShowTopMenu);
   };
 
   return (
     <Section
       initial={{ y: 10000 }}
       animate={{ y: 0 }}
-      transition={{ type: 'tween', duration: 1 }}
+      transition={{ type: 'tween', duration: 0.5 }}
     >
-      <Toggle onClick={() => onToggle()}>
-        {active ? (
+      <Toggle onClick={showTopMenuToggle}>
+        {isShowTopMenu ? (
           <AiOutlineClose className='closeIcon' />
         ) : (
           <AiOutlineMenu className='menuIcon' />
@@ -31,7 +36,7 @@ const Contact = () => {
           animate={{ opacity: 1, scale: [0, 1.2, 1] }}
           transition={{ type: 'tween', duration: 1, delay: 1 }}
         >
-          <BigText>Front-end Developer</BigText>
+          <BigText>FrontEnd Engineer</BigText>
           <BigText>
             Email <SmallText>haeru9410@gmail.com</SmallText>
           </BigText>
@@ -39,7 +44,7 @@ const Contact = () => {
             Residence <SmallText>Seoul, South Korea</SmallText>
           </BigText>
         </TextBox>
-        <Linkbar
+        <LinkBar
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
@@ -73,17 +78,17 @@ const Contact = () => {
           >
             blog
           </Li>
-        </Linkbar>
+        </LinkBar>
       </Box>
       <Copyright>Copyright @ 2022 Jung Haeseok</Copyright>
     </Section>
   );
 };
 
-export default Contact;
+export default ContactPage;
 
 const Section = styled(motion.section)`
-  background-color: ${Colors.white};
+  background-color: ${({ theme }) => theme.gray100};
   width: 100%;
   height: 100vh;
   display: flex;
@@ -93,7 +98,7 @@ const Section = styled(motion.section)`
 `;
 
 const Box = styled.div`
-  color: ${Colors.black};
+  color: ${({ theme }) => theme.black};
   max-width: 800px;
   width: 100%;
   max-height: 500px;
@@ -113,13 +118,13 @@ const BigText = styled.span`
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #333;
+  color: ${({ theme }) => theme.black_333};
 `;
 const SmallText = styled.span`
   font-weight: 300;
 `;
 
-const Linkbar = styled(motion.ul)`
+const LinkBar = styled(motion.ul)`
   display: flex;
   margin-top: 30px;
 `;
@@ -128,7 +133,7 @@ const Li = styled(motion.li)`
   margin: 0 10px;
   font-size: 1.5rem;
   &:hover {
-    color: ${Colors.yellow};
+    color: ${({ theme }) => theme.yellow};
   }
   border-right: 1px solid rgba(204, 204, 204, 0.5);
   padding-right: 15px;
@@ -141,7 +146,7 @@ const Li = styled(motion.li)`
 `;
 
 const Copyright = styled.div`
-  color: ${Colors.black};
+  color: ${({ theme }) => theme.black};
   position: absolute;
   bottom: 50px;
 `;
@@ -164,6 +169,6 @@ const Toggle = styled.div`
     transition: 0.3s ease-in-out;
     width: 25px;
     height: 25px;
-    fill: ${Colors.black};
+    fill: ${({ theme }) => theme.black};
   }
 `;

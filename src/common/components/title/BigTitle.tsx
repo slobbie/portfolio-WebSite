@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Colors } from '../Styled/Colors';
 
 interface BigTitleProps {
   top?: number;
@@ -44,7 +43,7 @@ const Text = styled.h2<BigTitleProps>`
   left: ${(props) => props.left + '%'};
   right: ${(props) => props.right + '%'};
   bottom: ${(props) => props.bottom + '%'};
-  color: ${Colors.gray200};
+  color: ${({ theme }) => theme.gray200};
   /* font-size: calc(5rem + 5vw); */
   ${Fontsize}
   z-index: 0;
