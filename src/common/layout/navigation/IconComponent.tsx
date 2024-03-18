@@ -5,7 +5,6 @@ import { ReactComponent as GithubIcon } from '@assets/svg/github-brands.svg';
 import { ReactComponent as Blog } from '@assets/svg/laptop-code-solid.svg';
 import { ReactComponent as Notion } from '@assets/svg/notion-logo.svg';
 import { isShowMain } from '@atom/atom';
-import { Colors } from '@common/styles/theme/Colors';
 import { motion } from 'framer-motion';
 import routes from '@src/common/constants/path.constants';
 
@@ -21,7 +20,7 @@ const IconComponent = () => {
 
   /** svg color */
   const svgColor = useMemo(() => {
-    return showIsMain ? Colors.white : Colors.black;
+    return showIsMain ? '#fff' : '#000';
   }, [showIsMain]);
 
   return (
