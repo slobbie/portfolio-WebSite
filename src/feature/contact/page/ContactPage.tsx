@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Colors } from '@common/styles/theme/Colors';
 import { motion } from 'framer-motion';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
@@ -89,7 +88,7 @@ const ContactPage = () => {
 export default ContactPage;
 
 const Section = styled(motion.section)`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.gray100};
   width: 100%;
   height: 100vh;
   display: flex;
@@ -99,7 +98,7 @@ const Section = styled(motion.section)`
 `;
 
 const Box = styled.div`
-  color: ${Colors.black};
+  color: ${({ theme }) => theme.black};
   max-width: 800px;
   width: 100%;
   max-height: 500px;
@@ -119,7 +118,7 @@ const BigText = styled.span`
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #333;
+  color: ${({ theme }) => theme.black_333};
 `;
 const SmallText = styled.span`
   font-weight: 300;
@@ -134,7 +133,7 @@ const Li = styled(motion.li)`
   margin: 0 10px;
   font-size: 1.5rem;
   &:hover {
-    color: ${Colors.yellow};
+    color: ${({ theme }) => theme.yellow};
   }
   border-right: 1px solid rgba(204, 204, 204, 0.5);
   padding-right: 15px;
@@ -147,7 +146,7 @@ const Li = styled(motion.li)`
 `;
 
 const Copyright = styled.div`
-  color: ${Colors.black};
+  color: ${({ theme }) => theme.black};
   position: absolute;
   bottom: 50px;
 `;
@@ -170,6 +169,6 @@ const Toggle = styled.div`
     transition: 0.3s ease-in-out;
     width: 25px;
     height: 25px;
-    fill: ${Colors.black};
+    fill: ${({ theme }) => theme.black};
   }
 `;

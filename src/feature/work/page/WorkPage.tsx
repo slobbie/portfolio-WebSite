@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { isTopMenu } from '@atom/atom';
-import { Colors } from '@common/styles/theme/Colors';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import BigTitle from '@common/components/title/BigTitle';
@@ -248,7 +247,7 @@ const More = styled.div`
   left: -100px;
   font-size: calc(1rem + 1vw);
   font-weight: bold;
-  color: #bec1c4;
+  color: ${({ theme }) => theme.gray300};
 `;
 
 const SpaceBox = styled.div`
@@ -257,7 +256,7 @@ const SpaceBox = styled.div`
 `;
 
 const Section = styled(motion.section)`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.gray000};
   width: 100%;
   min-height: 100vh;
   height: auto;
@@ -309,7 +308,7 @@ const Toggle = styled.div`
     transition: 0.3s ease-in-out;
     width: 25px;
     height: 25px;
-    fill: ${Colors.black};
+    fill: ${({ theme }) => theme.black};
   }
 `;
 
@@ -327,13 +326,13 @@ const CareerInfoBox = styled.div`
 `;
 
 const CareerTitle = styled.h2`
-  color: #333;
+  color: ${({ theme }) => theme.black_333};
   font-weight: 500;
 `;
 
 const CareerTextBox = styled.div`
   margin-top: 10px;
-  color: #333;
+  color: ${({ theme }) => theme.black_333};
   display: flex;
   flex-direction: column;
   padding-top: 5px;
@@ -373,7 +372,7 @@ const ProjectTextBox = styled(CareerTextBox)`
     display: inline-block;
     margin-left: 5px;
     span {
-      color: #4593fc;
+      color: ${({ theme }) => theme.blue_4593fc};
     }
   }
 `;
@@ -386,7 +385,7 @@ const UserInfo = styled(CareerInfo)`
   display: flex;
   flex-direction: column;
   h3 {
-    color: #333;
+    color: ${({ theme }) => theme.black_333};
     margin-top: 20px;
   }
 `;

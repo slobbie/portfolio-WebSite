@@ -53,8 +53,7 @@ const noneAnimation = keyframes`
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  /* background-color: #161616; */
-  background-color: #1e1e1e;
+  background-color: ${({ theme }) => theme.gray100};
   overflow-x: hidden;
   transform-style: preserve-3d;
   transform: rotate(0);
@@ -90,7 +89,7 @@ const MainContainer = styled.div`
       transform-style: preserve-3d;
       transform-origin: left;
       transition: 0.5s ease-in-out;
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.gray000};
     }
     &::before {
       z-index: -1;
@@ -127,7 +126,7 @@ const OverLay = styled.div`
   top: 0;
   left: 0;
 
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.gray000};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -68,12 +68,12 @@ const Li = styled.div`
     transform: translateY(-50%);
     height: 5px;
     width: 0;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.gray000};
     transition: 0.3s ease-in-out;
   }
   &:hover {
     padding-left: 24px;
-    color: yellow;
+    color: ${({ theme }) => theme.yellow};
   }
   &:hover::before {
     width: 15px;

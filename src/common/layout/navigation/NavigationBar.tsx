@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { isShowMain } from '@atom/atom';
 import { Link } from 'react-router-dom';
-import { Colors } from '@common/styles/theme/Colors';
 import IconComponent from '@src/common/layout/navigation/IconComponent';
 
 export interface ClickProps {
@@ -55,7 +54,8 @@ const Logo = styled.div<ClickProps>`
   margin-bottom: auto;
   font-weight: 700;
   a {
-    color: ${(props) => (props.click ? Colors.white : Colors.black)};
+    color: ${(props) =>
+      props.click ? props.theme.gray000 : props.theme.black};
   }
   img {
     width: 45px;

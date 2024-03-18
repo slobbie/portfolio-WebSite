@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { Colors } from '@common/styles/theme/Colors';
 import { ReactComponent as Logo } from '@assets/svg/EnterKey.svg';
 import { useRecoilState } from 'recoil';
 import { isShowMain, isTopMenu } from '@atom/atom';
@@ -95,14 +94,13 @@ const MoreTextBox = styled(motion.div)`
   position: absolute;
   font-size: calc(1rem + 1vw);
   font-weight: bold;
-  /* color: #e5e8eb; */
-  color: #bec1c4;
+  color: ${({ theme }) => theme.gray300};
 `;
 
 const Section = styled(motion.section)`
   width: 100%;
   height: 100vh;
-  background: ${Colors.white};
+  background: ${({ theme }) => theme.gray000};
   transition: all 1s ease;
 `;
 
@@ -122,7 +120,7 @@ const TextAni = keyframes`
 `;
 
 const Text = styled(motion.h2)<ClickProps>`
-  color: ${Colors.black};
+  color: ${({ theme }) => theme.black};
   position: absolute;
   display: ${(props) => (props.click ? 'none' : 'block')};
   top: 25%;
@@ -174,7 +172,7 @@ const DarkDiv = styled.div<ClickProps>`
   width: ${(props) => (props.click ? '50%' : '0%')};
   height: ${(props) => (props.click ? '100%' : '0%')};
   z-index: 10;
-  background-color: #1e1e1e;
+  background-color: ${({ theme }) => theme.gray100};
   transition: height 0.5s ease, width 1s ease 0.5s;
 `;
 
@@ -197,6 +195,6 @@ const Toggle = styled.div`
     transition: 0.3s ease-in-out;
     width: 25px;
     height: 25px;
-    fill: ${Colors.black};
+    fill: ${({ theme }) => theme.black};
   }
 `;

@@ -10,7 +10,6 @@
 // =============================================================================
 
 import styled from 'styled-components';
-import { Colors } from '@common/styles/theme/Colors';
 import Me from '@assets/Images/profile.png';
 import { motion } from 'framer-motion';
 
@@ -65,17 +64,22 @@ const Box = styled(motion.div)`
   position: absolute;
   background: linear-gradient(
         to right,
-        ${Colors.white} 50%,
-        ${Colors.black} 50%
+        ${({ theme }) => theme.gray000} 50%,
+        ${({ theme }) => theme.black} 50%
       )
       bottom,
-    linear-gradient(to right, ${Colors.white} 50%, ${Colors.black} 50%) top;
+    linear-gradient(
+        to right,
+        ${({ theme }) => theme.gray000} 50%,
+        ${({ theme }) => theme.black} 50%
+      )
+      top;
   z-index: 10;
   background-repeat: no-repeat;
   background-size: 100% 2px;
-  border-left: 2px solid ${Colors.white};
-  border-right: 2px solid ${Colors.black};
-  color: black;
+  border-left: 2px solid ${({ theme }) => theme.gray000};
+  border-right: 2px solid ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.black};
 `;
 
 const SubBox = styled.div`
@@ -93,7 +97,7 @@ const SubBox = styled.div`
 `;
 const Text = styled(motion.div)`
   font-size: calc(1em + 1.5vw);
-  color: ${Colors.white};
+  color: ${({ theme }) => theme.gray000};
   padding: 2rem;
   cursor: pointer;
 
@@ -106,7 +110,7 @@ const Text = styled(motion.div)`
   }
 
   & > *:last-child {
-    color: ${Colors.gray200};
+    color: ${({ theme }) => theme.gray200};
     opacity: 0.6;
     font-size: calc(0.5rem + 1.5vw);
     font-weight: 300;

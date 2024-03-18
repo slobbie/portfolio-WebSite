@@ -101,5 +101,5 @@ const Line = styled(motion.div)<{ $showIsMain: boolean }>`
   width: 2px;
   height: 8rem;
   background-color: ${(props) =>
-    props.$showIsMain ? Colors.white : Colors.black};
+    props.$showIsMain ? props.theme.gray000 : props.theme.black};
 `;
