@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/portfolio-website/static/js/main.4f5d097a.js",
+    "main.js": "/portfolio-website/static/js/main.e97248d9.js",
     "static/media/profile.png": "/portfolio-website/static/media/profile.07137b83d3b88fdea745.png",
     "static/media/EnterKey.svg": "/portfolio-website/static/media/EnterKey.e70005d0c62e8a5160bd669e3a234fea.svg",
     "static/media/github-brands.svg": "/portfolio-website/static/media/github-brands.dec190f36be9b5ad8d30c62aaf531691.svg",
     "static/media/notion-logo.svg": "/portfolio-website/static/media/notion-logo.409677e841feb365e4e9503765622b20.svg",
     "static/media/laptop-code-solid.svg": "/portfolio-website/static/media/laptop-code-solid.0ce12611e414cdf1939120db3a3e447c.svg",
     "index.html": "/portfolio-website/index.html",
-    "main.4f5d097a.js.map": "/portfolio-website/static/js/main.4f5d097a.js.map"
+    "main.e97248d9.js.map": "/portfolio-website/static/js/main.e97248d9.js.map"
   },
   "entrypoints": [
-    "static/js/main.4f5d097a.js"
+    "static/js/main.e97248d9.js"
   ]
 }
