@@ -21,7 +21,7 @@ const routes = Object.freeze({
     notion:
       'https://bolder-frog-020.notion.site/76dc1d0ebd64400ba4a9eb6229eddea2',
     portfolio: 'https://slobbie.github.io/portfolio-website/',
-    canvas: 'https://slobbie.github.io/React-canvas/sheep',
+    canvas: 'https://slobbie.github.io/React-canvas/',
     pokemon: 'https://slobbie.github.io/PokemonCardBooks/',
     movieFlex: 'https://slobbie.github.io/TvMovie/',
   },
